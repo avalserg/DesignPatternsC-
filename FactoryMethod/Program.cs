@@ -18,6 +18,7 @@ public abstract class Element
     }
 
 }
+// we use inheritance instead of injection
 public class NavigationBar : Element
 {
     public NavigationBar()

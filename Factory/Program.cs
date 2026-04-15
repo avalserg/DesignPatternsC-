@@ -1,4 +1,5 @@
-﻿new NavigationBar();
+﻿//it`s not a pattern
+new NavigationBar();
 new DropdownMenu();
 
 public class NavigationBar

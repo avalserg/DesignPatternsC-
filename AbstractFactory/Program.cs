@@ -25,10 +25,10 @@ public class DropdownMenu
         Button = factory.CreateButton();
     }
 }
-
+// it`s similar to abstract class 
 public interface IUIFactory
 {
-    Button CreateButton();
+    Button CreateButton();// it`s like a factory method
     Checkbox CreateCheckbox();
 }
 
