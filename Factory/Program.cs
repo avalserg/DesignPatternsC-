@@ -1,33 +1,24 @@
 ﻿new NavigationBar();
 new DropdownMenu();
 
-//Bad Example
-//We need to change Type in several places
-//if some logic changes
 public class NavigationBar
 {
-    public NavigationBar() =>
-        new Button()
-        {
-            Type = "DefaultButton" // rename to RedButton
-        };
-
+    public NavigationBar() => ButtonFactory.CreateButton();
 }
 
 public class DropdownMenu
 {
-    public DropdownMenu() =>
-        new Button()
-        {
-            Type = "DefaultButton" // rename to RedButton
-        };
+    public DropdownMenu() => ButtonFactory.CreateButton();
 }
 
 public class ButtonFactory
 {
     public static Button CreateButton()
     {
-        return null;
+        return new Button()
+        {
+            Type = "RedButton" // rename to RedButton in one place
+        };
     }
 }
 public class Button
