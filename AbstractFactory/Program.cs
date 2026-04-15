@@ -1,42 +1,58 @@
-﻿new NavigationBar(new Apple()); //render specifically for some case 
-new DropdownMenu(new Android());
+﻿var navBar = new NavigationBar(new Apple());
+var dropdown = new DropdownMenu(new Android());
+Console.WriteLine(navBar.Button.Type);
+Console.WriteLine(navBar.Checkbox.Type);
+Console.WriteLine(dropdown.Button.Type);
 
 public class NavigationBar
 {
-    public NavigationBar(IUIFactory factory) => factory.CreateButton(); // we can use classes which implement interface
+    public Button Button { get; }
+    public Checkbox Checkbox { get; }
+
+    public NavigationBar(IUIFactory factory)
+    {
+        Button = factory.CreateButton();
+        Checkbox = factory.CreateCheckbox();
+    }
 }
 
 public class DropdownMenu
 {
-    public DropdownMenu(IUIFactory factory) => factory.CreateButton(); // we only use Apple
+    public Button Button { get; }
+
+    public DropdownMenu(IUIFactory factory)
+    {
+        Button = factory.CreateButton();
+    }
 }
 
 public interface IUIFactory
 {
-    public Button CreateButton();
+    Button CreateButton();
+    Checkbox CreateCheckbox();
 }
 
 public class Apple : IUIFactory
 {
-    public Button CreateButton()
-    {
-        return new Button()
-        {
-            Type = "iOS Button"
-        };
-    }
+    public Button CreateButton() =>
+        new Button { Type = "iOS Button" };
+
+    public Checkbox CreateCheckbox() =>
+        new Checkbox { Type = "iOS Checkbox" };
 }
 public class Android : IUIFactory
 {
-    public Button CreateButton()
-    {
-        return new Button()
-        {
-            Type = "Android Button"
-        };
-    }
+    public Button CreateButton() =>
+        new Button { Type = "Android Button" };
+    public Checkbox CreateCheckbox() =>
+        new Checkbox { Type = "Android Checkbox" };
 }
 public class Button
+{
+    public string Type { get; set; }
+}
+
+public class Checkbox
 {
     public string Type { get; set; }
 }
