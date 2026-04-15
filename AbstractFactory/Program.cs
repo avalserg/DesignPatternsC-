@@ -1,14 +1,14 @@
 ﻿new NavigationBar(new Apple()); //render specifically for some case 
-new DropdownMenu(new Apple());
+new DropdownMenu(new Android());
 
 public class NavigationBar
 {
-    public NavigationBar(Apple factory) => factory.CreateButton(); // we only use Apple
+    public NavigationBar(IUIFactory factory) => factory.CreateButton(); // we can use classes which implement interface
 }
 
 public class DropdownMenu
 {
-    public DropdownMenu(Apple factory) => factory.CreateButton(); // we only use Apple
+    public DropdownMenu(IUIFactory factory) => factory.CreateButton(); // we only use Apple
 }
 
 public interface IUIFactory
